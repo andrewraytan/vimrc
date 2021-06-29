@@ -8,6 +8,11 @@ Plug 'scrooloose/syntastic'
 " Side to display tags and file outline
 Plug 'majutsushi/tagbar'
 
+" Used to run python files as jupyter notebook
+" on separate console, do jupyter console
+" in python file, run :JupyterConnect
+Plug 'jupyter-vim/jupyter-vim'
+
 call plug#end()
 syntax enable
 filetype plugin indent on
@@ -17,10 +22,9 @@ set backspace=indent,eol,start
 
 set number
 set autoindent
-set smartindent
+set noexpandtab
 set shiftwidth=4
 set tabstop=4
-set softtabstop=4
 set splitright
 
 set nobackup        " do not keep a backup file, use versions instead
@@ -41,15 +45,15 @@ set t_Co=256
 colorscheme ron
 
 " easy switching between splits
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-H> <C-W><C-H>
-nnoremap <C-L> <C-W><C-L>
+noremap <C-J> <C-W><C-J>
+noremap <C-K> <C-W><C-K>
+noremap <C-H> <C-W><C-H>
+noremap <C-L> <C-W><C-L>
 " navigating files and tabs
-nnoremap gr gT
-nnoremap K 10k
-nnoremap Z J
-nnoremap J 10j
+noremap gr gT
+noremap K 10k
+noremap Z J
+noremap J 10j
 " auto-braces for functions
 inoremap {<CR> {<CR>}<ESC>O
 
@@ -86,3 +90,10 @@ let g:syntastic_mode_map = {"mode": "passive"}
 let g:syntastic_auto_loc_list = 1
 " auto fill location-list with errors found
 let g:syntastic_always_populate_loc_list = 1
+
+" jupyter-vim stuff
+" eliminate their default keybinds
+let g:jupyter_mapkeys = 0
+" easy :JupyterSendCell shortcut Ctrl+space
+nmap <c-@> :JupyterSendCell<CR>
+
