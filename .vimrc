@@ -36,6 +36,7 @@ set incsearch       " do incremental searching
 
 set mouse+=a
 set ttimeoutlen=10
+set shortmess-=S
 
 nmap j gj
 nmap k gk
